@@ -11,6 +11,7 @@ include firewall
 include composer
 include prepareezpublish
 include motd
+include addhosts
 include addtostartup
 
 class ntpd {
@@ -201,6 +202,16 @@ class prepareezpublish {
     service { 'httpd':
               ensure => running,
               enable => true,
+            }
+}
+
+class addhosts {
+    file    {'/etc/hosts':
+              ensure  => file,
+              content => template('/tmp/vagrant-puppet/manifests/hosts/hosts.erb'),
+              owner   => 'root',
+              group   => 'root',
+              mode    => '644',
             }
 }
 
