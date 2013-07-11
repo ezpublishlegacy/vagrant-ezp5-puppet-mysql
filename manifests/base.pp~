@@ -10,7 +10,7 @@ include virtualhosts
 include firewall
 include composer
 include prepareezpublish
-include motd
+inclyde motd
 
 class ntpd {
     package { "ntpdate.x86_64": 
