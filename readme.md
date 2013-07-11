@@ -10,6 +10,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - PHP 5.3.3
 - Composer
 - eZ Publish 5 Community 2013.6
+- Xdebug
 
 ## Requirements:
 
