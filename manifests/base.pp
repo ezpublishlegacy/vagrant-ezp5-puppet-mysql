@@ -36,9 +36,9 @@ class apachephp {
     package { $neededpackages:
                ensure => installed
             }
-    file    {'/etc/httpd/conf/httpd.conf':
+    file    {'/etc/httpd/conf.d/01.accept_pathinfo.conf':
               ensure  => file,
-              content => template('/tmp/vagrant-puppet/manifests/httpd/httpd.conf.erb'),
+              content => template('/tmp/vagrant-puppet/manifests/httpd/01.accept_pathinfo.conf.erb'),
               owner   => 'root',
               group   => 'root',
               mode    => '644',
