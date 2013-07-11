@@ -187,8 +187,8 @@ class composer {
                returns => [ 0, 1, '', ' ']
             } ~>
     exec    { "link composer":
-               command => "ln -s /usr/local/bin/composer.phar /usr/local/bin/composer.phar",
-               path    => "/usr/local/bin:/usr/bin/",
+               command => "/bin/ln -s /usr/local/bin/composer.phar /usr/local/bin/composer.phar",
+               path    => "/usr/local/bin:/usr/bin/:/bin",
                returns => [ 0, 1, '', ' ']
             }
 }
