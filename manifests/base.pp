@@ -11,6 +11,7 @@ include firewall
 include composer
 include prepareezpublish
 include motd
+include addtostartup
 
 class ntpd {
     package { "ntpdate.x86_64": 
@@ -57,6 +58,12 @@ class imagick {
     package { $neededpackages:
                ensure => installed
             }
+    exec    { "update-channels":
+              command => "pear update-channels",
+              path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
+              require => Package['php-pear'],
+              returns => [ 0, 1, '', ' ']
+            } ~>
     exec    { "install imagick":
               command => "pecl install imagick",
               path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
@@ -197,3 +204,20 @@ class prepareezpublish {
             }
 }
 
+class addtostartup {
+    exec    { "add httpd to startup":
+              command => "/sbin/chkconfig httpd on",
+              path    => "/usr/local/bin/:/bin/",
+              require => Package["httpd", "php-cli", "php-gd" ,"php-mysql", "php-pear", "php-xml", "php-mbstring", "php"]
+            } ~>
+    exec    { "add mysql to startup":
+              command => "/sbin/chkconfig --add mysqld",
+              path    => "/usr/local/bin/:/bin/",
+              require => Package["httpd", "php-cli", "php-gd" ,"php-mysql", "php-pear", "php-xml", "php-mbstring", "php"]
+            } ~>
+    exec    { "add mysql":
+              command => "/sbin/chkconfig mysqld on",
+              path    => "/usr/local/bin/:/bin/",
+              require => Package["httpd", "php-cli", "php-gd" ,"php-mysql", "php-pear", "php-xml", "php-mbstring", "php"]
+            }
+}
