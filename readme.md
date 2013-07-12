@@ -25,23 +25,23 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - Wait (the first time will take a few minutes, as the base box is downloaded, and required packages are installed for the first time), get some coffee.
 - Done! `$ vagrant ssh` to SSH into your newly created machine. The MOTD contains details on the database, hostnames, etc.
 
-## Important Notes: 
 
-eZ Publish 5.x Vagrant Box, provisioned with Puppet
 
+## Environment Details:
+
+```
 MySQL:
- default database: ezp
- default db user:  ezp
- default db user password: ezp
+  default database: ezp
+  default db user: ezp
+  default db user password: ezp
 
-Apache/httpd:
- www root: /var/www/html
+Apache/httpd: www root: /var/www/html
 
 eZ Publish 5 Project:
- location: /var/www/html/ezpublish5
- hostname: ezp5.dev.vagrant
- admin hostname: admin.ezp5.dev.vagrant
- environment: dev
+  location: /var/www/html/ezpublish5
+  hostname: ezp5.dev.vagrant
+  admin hostname: admin.ezp5.dev.vagrant
+  environment: dev
 
- Built @ cleverti by Pedro Resende
- https://github.com/cleverti  http://www.cleverti.com
+Built @ [cleverti](http://www.cleverti.com) by Pedro Resende
+```
