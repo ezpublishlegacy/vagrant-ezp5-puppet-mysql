@@ -25,7 +25,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - Wait (the first time will take a few minutes, as the base box is downloaded, and required packages are installed for the first time), get some coffee.
 - Done! `$ vagrant ssh` to SSH into your newly created machine. The MOTD contains details on the database, hostnames, etc.
 
-## Important Notes 
+## Important Notes: 
 
 eZ Publish 5.x Vagrant Box, provisioned with Puppet
 
