@@ -45,7 +45,7 @@ class apachephp {
               group   => 'root',
               mode    => '644',
             }
-    file    {'/etc/php.ini':
+    file    {'/etc/php.d/php.ini':
               ensure  => file,
               content => template('/tmp/vagrant-puppet/manifests/php/php.ini.erb'),
               owner   => 'root',
