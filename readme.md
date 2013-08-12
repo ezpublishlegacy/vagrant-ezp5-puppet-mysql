@@ -6,8 +6,8 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
 - CentOS 6.4 x64
 - Apache 2.2.15
-- MySQL 5.1.69
-- PHP 5.3.3
+- MySQL 5.5.33
+- PHP 5.4.17
 - APC 3.1.13
 - Xdebug 2.2.3
 - Composer
