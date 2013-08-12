@@ -29,7 +29,7 @@ function assets {
     cd $WWW/$EZPUBLISH_FOLDER
     /usr/bin/php ezpublish/console assets:install --symlink web
     /usr/bin/php ezpublish/console ezpublish:legacy:assets_install --symlink web
-    /usr/bin/php ezpublish/console assetic:dump --env=dev web
+    /usr/bin/php ezpublish/console assetic:dump
 }
 
 if [ ! -d $WWW/$EZPUBLISH_FOLDER ]; then
