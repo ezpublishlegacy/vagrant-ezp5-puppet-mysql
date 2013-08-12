@@ -16,56 +16,55 @@ include addtostartup
 
 class ntpd {
     package { "ntpdate.x86_64": 
-        ensure => installed 
+      ensure => installed 
     }
     service { "ntpd":
-        ensure => running,
+      ensure => running,
     }
 }
 
 class motd {
     file    {'/etc/motd':
-        ensure  => file,
-        content => template('/tmp/vagrant-puppet/manifests/motd/motd.erb'),
-        owner   => 'root',
-        group   => 'root',
-        mode    => '644',
+      ensure  => file,
+      content => template('/tmp/vagrant-puppet/manifests/motd/motd.erb'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '644',
     }
 }
 
 class apachephp {
     $neededpackages = [ "php", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "curl.x86_64" ]
-
     package { "httpd":
-        ensure => installed,
+      ensure => installed,
     } ->
     file    {'/etc/yum.repos.d/remi.repo':
-        ensure  => file,
-        content => template('/tmp/vagrant-puppet/manifests/repo/remi.repo.erb'),
-        owner   => 'root',
-        group   => 'root',
-        mode    => '644',
-    }->
+      ensure  => file,
+      content => template('/tmp/vagrant-puppet/manifests/repo/remi.repo.erb'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '644',
+    } ->
     package { $neededpackages:
         ensure => present,
     } ~>
     file    {'/etc/httpd/conf.d/01.accept_pathinfo.conf':
-        ensure  => file,
-        content => template('/tmp/vagrant-puppet/manifests/httpd/01.accept_pathinfo.conf.erb'),
-        owner   => 'root',
-        group   => 'root',
-        mode    => '644',
+      ensure  => file,
+      content => template('/tmp/vagrant-puppet/manifests/httpd/01.accept_pathinfo.conf.erb'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '644',
     } ~>
     file    {'/etc/php.d/php.ini':
-        ensure  => file,
-        content => template('/tmp/vagrant-puppet/manifests/php/php.ini.erb'),
-        owner   => 'root',
-        group   => 'root',
-        mode    => '644',
+      ensure  => file,
+      content => template('/tmp/vagrant-puppet/manifests/php/php.ini.erb'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '644',
     } ~>
     service { 'httpd':
-              ensure => running,
-              enable => true,
+      ensure => running,
+      enable => true,
     }
 }
 
@@ -155,8 +154,7 @@ class xdebug {
 }
 
 class ezfind {
-    $neededpackages = [ "java-1.6.0-openjdk.x86_64" ]
-    package { $neededpackages:
+    package { "java-1.6.0-openjdk.x86_64":
       ensure => installed
     }
 }
