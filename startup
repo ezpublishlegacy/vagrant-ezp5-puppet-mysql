@@ -23,7 +23,7 @@ function choice
 
 function option
 {
-    mv 'vagrant/Vagrantfile-'$OPTION 'Vagrantfile'
+    cp 'vagrant/Vagrantfile-'$OPTION 'Vagrantfile'
 }
 
 choice
