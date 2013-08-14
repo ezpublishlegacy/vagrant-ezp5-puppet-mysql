@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WWW=/var/www/html
-EZPUBLISH=http://share.ez.no/content/download/151343/893911/version/1/file/ezpublish5_community_project-2013.06-gpl-full.tar.gz
+EZPUBLISH=http://share.ez.no/content/download/152505/900457/version/1/file/ezpublish5_community_project-2013.07-gpl-full.tar.gz
 EZPUBLISH_FOLDER=ezpublish5
 
 function geteZPublish {
@@ -11,12 +11,12 @@ function geteZPublish {
 
 function extracteZPublish {
     cd $WWW
-    /bin/tar xzf ezpublish5_community_project-2013.06-gpl-full.tar.gz
+    /bin/tar xzf ezpublish5_community_project-2013.07-gpl-full.tar.gz
 }
 
 function rename {
     cd $WWW
-    /bin/mv /var/www/html/ezpublish5_community_project-2013.6-gpl-full/ $WWW/$EZPUBLISH_FOLDER
+    /bin/mv /var/www/html/ezpublish5_community_project-2013.7-gpl-full/ $WWW/$EZPUBLISH_FOLDER
 }
 
 function preparePermissions {
