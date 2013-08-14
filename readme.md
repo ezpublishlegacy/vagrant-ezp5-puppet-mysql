@@ -11,7 +11,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - APC 3.1.13
 - Xdebug 2.2.3
 - Composer
-- eZ Publish 5 Community 2013.6
+- eZ Publish 5 Community 2013.07
 
 ## Requirements:
 
