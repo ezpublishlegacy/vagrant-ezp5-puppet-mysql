@@ -24,7 +24,6 @@ function choice
 function option
 {
     mv 'vagrant/Vagrantfile-'$OPTION 'Vagrantfile'
-#    vagrant up
 }
 
 choice
