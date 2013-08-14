@@ -9,7 +9,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - MySQL 5.5.33
 - PHP 5.4.17
 - APC 3.1.13
-- Xdebug 2.2.3 or not, this is your choice through the ./startup.sh script
+- Xdebug 2.2.3 or not, this is your choice through the `$ ./startup` script
 - Composer
 - eZ Publish 5 Community 2013.07
 
@@ -21,7 +21,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 ## Getting started:
 
 - Clone this project to a directory
-- Run `$ ./startup clean` or `$ ./startup xdebug` if you want to use a clean machine with, or without, xdebug 
+- Run `$ ./startup.sh clean` or `$ ./startup.sh xdebug` if you want to use a clean machine with, or without, xdebug 
 - Run `$ vagrant up` from the terminal
 - Wait (the first time will take a few minutes, as the base box is downloaded, and required packages are installed for the first time), get some coffee.
 - Done! `$ vagrant ssh` to SSH into your newly created machine. The MOTD contains details on the database, hostnames, etc.
