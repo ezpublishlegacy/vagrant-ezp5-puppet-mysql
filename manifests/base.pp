@@ -61,11 +61,7 @@ class apachephp {
       owner   => 'root',
       group   => 'root',
       mode    => '644',
-    } ~>
-    service { 'httpd':
-      ensure => running,
-      enable => true,
-    }
+    } 
 }
 
 class imagick {
@@ -207,11 +203,16 @@ class composer {
 }
 
 class prepareezpublish {
+    service { 'httpd':
+      ensure => running,
+      enable => true,
+      before => Exec["prepare eZ Publish"]
+    } ~>
     exec    { "prepare eZ Publish":
       command => "/bin/bash /tmp/vagrant-puppet/manifests/preparezpublish.sh",
       path    => "/usr/local/bin/:/bin/",
-      require => Package["httpd", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php"]
-    } 
+      require => [Package["httpd", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php"], File['/etc/httpd/conf.d/01.accept_pathinfo.conf'], File['/etc/httpd/conf.d/ezp5.conf']]
+    }
 }
 
 class addhosts {
