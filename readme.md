@@ -9,7 +9,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - MySQL 5.5.33
 - PHP 5.4.17
 - APC 3.1.13
-- Xdebug 2.2.3
+- Xdebug 2.2.3 or not, this is your choice through the ./startup.sh script
 - Composer
 - eZ Publish 5 Community 2013.07
 
