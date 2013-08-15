@@ -166,7 +166,7 @@ class virtualhosts {
     }
     file    {'/etc/httpd/conf.d/ezp5.conf':
       ensure  => file,
-      content => template('/tmp/vagrant-puppet/manifests/virtualhost/ezp5.conf.erb'),
+      content => template('/tmp/vagrant-puppet/manifests/virtualhost/ezp5.xdebug.conf.erb'),
       owner   => 'root',
       group   => 'root',
       mode    => '644',
