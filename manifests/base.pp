@@ -33,7 +33,7 @@ class motd {
 }
 
 class apachephp {
-    $neededpackages = [ "php", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "php-pear-Net-Curl", "php-pear-Date", "curl.x86_64", "php-mcrypt" ]
+    $neededpackages = [ "php", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "php-pear-Net-Curl", "php-pear-Date", "curl.x86_64" ]
     package { "httpd":
       ensure => installed,
     } ->
