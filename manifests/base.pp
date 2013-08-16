@@ -33,17 +33,7 @@ class motd {
 }
 
 class apachephp {
-    $neededpackages = [ "php", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "php-pear-Net-Curl", "php-pear-Date", "curl.x86_64" ]
-    package { "httpd":
-      ensure => installed,
-    } ->
-    file    {'/etc/yum.repos.d/remi.repo':
-      ensure  => file,
-      content => template('/tmp/vagrant-puppet/manifests/repo/remi.repo.erb'),
-      owner   => 'root',
-      group   => 'root',
-      mode    => '644',
-    } ->
+    $neededpackages = [ "httpd", "php", "php-cli", "php-gd" ,"php-mysql", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "curl.x86_64" ]
     package { $neededpackages:
         ensure => present,
     } ~>
@@ -194,7 +184,7 @@ class prepareezpublish {
     exec    { "prepare eZ Publish":
       command => "/bin/bash /tmp/vagrant-puppet/manifests/preparezpublish.sh",
       path    => "/usr/local/bin/:/bin/",
-      require => Package["httpd", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php"]
+      require => Package["httpd", "php", "php-cli", "php-gd" ,"php-mysql", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "curl.x86_64"]
     }
 }
 
@@ -212,16 +202,16 @@ class addtostartup {
     exec    { "add httpd to startup":
       command => "/sbin/chkconfig httpd on",
       path    => "/usr/local/bin/:/bin/",
-      require => Package["httpd", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php"]
+      require => Package["httpd", "php", "php-cli", "php-gd" ,"php-mysql", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "curl.x86_64"]
     } ~>
     exec    { "add mysql to startup":
       command => "/sbin/chkconfig --add mysqld",
       path    => "/usr/local/bin/:/bin/",
-      require => Package["httpd", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php"]
+      require => Package["httpd", "php", "php-cli", "php-gd" ,"php-mysql", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "curl.x86_64"]
     } ~>
     exec    { "add mysql":
       command => "/sbin/chkconfig mysqld on",
       path    => "/usr/local/bin/:/bin/",
-      require => Package["httpd", "php-cli", "php-gd" ,"php-mysqlnd", "php-pear", "php-xml", "php-mbstring", "php"]
+      require => Package["httpd", "php", "php-cli", "php-gd" ,"php-mysql", "php-pear", "php-xml", "php-mbstring", "php-pecl-apc", "php-process", "curl.x86_64"]
     }
 }
