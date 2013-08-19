@@ -1,4 +1,4 @@
-# vagrant:ezp5:puppet
+# vagrant:ezp5:puppet:mysql
 
 Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
