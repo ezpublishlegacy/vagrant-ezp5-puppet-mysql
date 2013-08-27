@@ -13,6 +13,7 @@ include prepareezpublish
 include motd
 include addhosts
 include addtostartup
+include git
 
 class ntpd {
     package { "ntpdate.x86_64": 
@@ -30,6 +31,12 @@ class motd {
       owner   => 'root',
       group   => 'root',
       mode    => '644',
+    }
+}
+
+class git {
+    package { "git":
+      ensure => installed,
     }
 }
 
