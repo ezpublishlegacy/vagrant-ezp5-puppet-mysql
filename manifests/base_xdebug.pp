@@ -13,6 +13,7 @@ include prepareezpublish
 include motd
 include addhosts
 include addtostartup
+include git
 
 class ntpd {
     package { "ntpdate.x86_64": 
@@ -30,6 +31,12 @@ class motd {
       owner   => 'root',
       group   => 'root',
       mode    => '644',
+    }
+}
+
+class git {
+    package { "git":
+      ensure => installed,
     }
 }
 
@@ -93,32 +100,22 @@ class db {
     }
 }
 
+ class apc {
+    $neededpackages = [ "php-devel", "httpd-devel", "pcre-devel.x86_64", "php-pecl-apc.x86_64" ]
+     package { $neededpackages:
+       ensure => installed
+    } ~>
+   file    {'/etc/php.d/apc.ini':
+      ensure  => file,
+      content => template('/tmp/vagrant-puppet/manifests/php/apc.ini.erb'),
+    }
+ }
+
 class createdb {
     exec { "create-ezp-db":
       command => "/usr/bin/mysql -uroot -e \"create database ezp character set utf8; grant all on ezp.* to ezp@localhost identified by 'ezp';\"",
       require => Service["mysqld"],
       returns => [ 0, 1, '', ' ']
-    }
-}
-
-class apc {
-    $neededpackages = [ "php-devel", "httpd-devel", "pcre-devel.x86_64" ]
-    package { $neededpackages:
-      ensure => installed
-    }
-    exec    { "install apc":
-      command => "pear install pecl/apc",
-      path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
-      require => Package["php-pear", "httpd"],
-      returns => [ 0, 1, '', ' ']
-    }
-    file    {'/etc/php.d/apc.ini':
-      ensure  => file,
-      content => template('/tmp/vagrant-puppet/manifests/php/apc.ini.erb'),
-      require => Package["php-pear", "httpd"],
-      owner   => 'root',
-      group   => 'root',
-      mode    => '644',
     }
 }
 

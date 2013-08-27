@@ -8,9 +8,10 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - Apache 2.2.15
 - MySQL 5.1.69
 - PHP 5.3.3
-- APC 3.1.13
+- APC 3.1.9
 - Xdebug 2.2.3 or not, this is your choice through Vagrantfile setup
 - Composer
+- Git or not, this is your choice throught Vagrantfile setup
 - eZ Publish 5 Community 2013.07
 
 ## Requirements:
