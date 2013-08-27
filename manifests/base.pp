@@ -2,6 +2,7 @@ include ntpd
 include apachephp
 include db
 include createdb
+include apc
 include imagick
 include ezfind
 include virtualhosts
@@ -90,6 +91,18 @@ class db {
       restart => true;
     }
 }
+
+
+ class apc {
+    $neededpackages = [ "php-devel", "httpd-devel", "pcre-devel.x86_64", "php-pecl-apc.x86_64" ]
+     package { $neededpackages:
+       ensure => installed
+    } ~>
+   file    {'/etc/php.d/apc.ini':
+      ensure  => file,
+      content => template('/tmp/vagrant-puppet/manifests/php/apc.ini.erb'),
+    }
+ }
 
 class createdb {
     exec { "create-ezp-db":
