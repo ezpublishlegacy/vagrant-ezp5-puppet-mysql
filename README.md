@@ -11,6 +11,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - APC 3.1.9
 - Xdebug 2.2.3 or not, this is your choice through Vagrantfile setup
 - Composer
+- Git or not, this is your choice throught Vagrantfile setup
 - eZ Publish 5 Community 2013.07
 
 ## Requirements:
