@@ -2,7 +2,6 @@ include ntpd
 include apachephp
 include db
 include createdb
-include apc
 include xdebug
 include imagick
 include ezfind
@@ -98,27 +97,6 @@ class createdb {
       command => "/usr/bin/mysql -uroot -e \"create database ezp character set utf8; grant all on ezp.* to ezp@localhost identified by 'ezp';\"",
       require => Service["mysqld"],
       returns => [ 0, 1, '', ' ']
-    }
-}
-
-class apc {
-    $neededpackages = [ "php-devel", "httpd-devel", "pcre-devel.x86_64" ]
-    package { $neededpackages:
-      ensure => installed
-    }
-    exec    { "install apc":
-      command => "pear install pecl/apc",
-      path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
-      require => Package["php-pear", "httpd"],
-      returns => [ 0, 1, '', ' ']
-    }
-    file    {'/etc/php.d/apc.ini':
-      ensure  => file,
-      content => template('/tmp/vagrant-puppet/manifests/php/apc.ini.erb'),
-      require => Package["php-pear", "httpd"],
-      owner   => 'root',
-      group   => 'root',
-      mode    => '644',
     }
 }
 
