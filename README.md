@@ -44,8 +44,8 @@ eZ Publish 5 Project:
   environment: dev
 ```
 
-COPYRIGHT
+## COPYRIGHT
 Copyright (C) 1999-2013 eZ Systems AS. All rights reserved.
 
-LICENSE
+## LICENSE
 http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
