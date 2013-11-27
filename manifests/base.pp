@@ -1,5 +1,6 @@
 include ntpd
 include apachephp
+include generatessh
 include db
 include createdb
 include apc
@@ -29,6 +30,13 @@ class motd {
       owner   => 'root',
       group   => 'root',
       mode    => '644',
+    }
+}
+
+class generatessh {
+    exec { "ssh-keygen":
+        command => "ssh-keygen -f /home/vagrant/.ssh/id_rsa -N ''",
+        path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin",
     }
 }
 
