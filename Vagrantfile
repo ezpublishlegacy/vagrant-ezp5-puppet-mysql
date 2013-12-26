@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
   #
   # View the documentation for the provider you're using for more
   # information on available options.
-
+  config.vm.provision :module_path => "modules"
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "base_xdebug.pp"
