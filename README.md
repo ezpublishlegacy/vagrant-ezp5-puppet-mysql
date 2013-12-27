@@ -21,7 +21,8 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
 ## Getting started:
 
-The following steps will setup a Cent Os 6.4 based VM for development. There are to possible processes, the first one you'll clone the repository while the second one you'll download it and extract it without needing to have the git tools installed:
+The following steps will setup a Cent Os 6.4 based VM for development with eZ Publish 2013.11 pre-installed.
+There are to possible processes, the first one you'll clone the repository while the second one you'll download it and extract it without needing to have the git tools installed:
 
 ### 1. Cloning the repository
 
