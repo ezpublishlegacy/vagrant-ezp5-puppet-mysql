@@ -12,7 +12,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - Xdebug 2.2.3 or not, this is your choice through Vagrantfile setup
 - Composer
 - Git or not, this is your choice throught Vagrantfile setup
-- eZ Publish 5 Community 2013.07
+- eZ Publish 5 Community 2013.11
 
 ## Requirements:
 
@@ -21,11 +21,70 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
 ## Getting started:
 
+The following steps will setup a Cent Os 6.4 based VM for development. There are to possible processes, the first one you'll clone the repository while the second one you'll download it and extract it without needing to have the git tools installed:
+
+### 1. Cloning the repository
+
 - Clone this project to a directory 
+
+```
+$ git clone git@github.com:cleverti/vagrant-ezp5-puppet-mysql.git
+
+$ cd vagrant-ezp5-puppet-mysql
+```
+
+### 2. Downloading the repository
+
+- Download: https://github.com/cleverti/vagrant-ezp5-puppet-mysql/archive/master.zip
+- Extract the file to a desired location
+- Open your console and make sure you are inside the extracted folder
+
+```
+$ cd vagrant-ezp5-puppet-mysql
+```
+
+### Common steps
+
 - Run `$ vagrant up` from the terminal
 - Wait (the first time will take a few minutes, as the base box is downloaded, and required packages are installed for the first time), get some coffee.
 - Done! `$ vagrant ssh` to SSH into your newly created machine. The MOTD contains details on the database, hostnames, etc.
 - By default Xdebug is enable, if you want to disable it, go to line 55 of Vagrantfile comment it and uncomment line 58. Don't forget to run `$ vagrant up` after
+
+## Access your site
+
+- Open your browser on http://localhost:8080
+
+## SSH into VM
+
+You'll have to be inside your folder (vagrant-ezp5-puppet-mysql)
+
+```
+$ vagrant ssh
+```
+
+org
+
+```
+$ ssh localhost -p2222
+```
+
+## Shutdown the VM
+
+You'll have to be inside your folder (vagrant-ezp5-puppet-mysql)
+
+```
+$ vagrant halt
+```
+
+## Rebuild
+
+You'll have to be inside your folder (vagrant-ezp5-puppet-mysql)
+
+```
+$ vagrant destroy
+
+$ vagrant up
+```
 
 ## Environment Details:
 
