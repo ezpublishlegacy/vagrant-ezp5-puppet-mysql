@@ -13,3 +13,4 @@ include mysql::createdb
 include startup
 include ezpublish
 include ezpublish::ezfind
+include ezpublish::install
