@@ -62,7 +62,7 @@ You'll have to be inside your folder (vagrant-ezp5-puppet-mysql)
 $ vagrant ssh
 ```
 
-org
+or
 
 ```
 $ ssh vagrant@localhost -p2222
