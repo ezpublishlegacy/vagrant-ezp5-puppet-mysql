@@ -65,7 +65,9 @@ $ vagrant ssh
 org
 
 ```
-$ ssh localhost -p2222
+$ ssh vagrant@localhost -p2222
+
+Password: vagrant
 ```
 
 ## Shutdown the VM
