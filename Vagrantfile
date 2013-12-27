@@ -51,10 +51,10 @@ Vagrant.configure("2") do |config|
   # information on available options.
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
-    # puppet.manifest_file  = "base_xdebug.pp"
+    puppet.manifest_file  = "base_xdebug.pp"
     puppet.module_path = "modules"
     # If you want to use the version that doesn't include xdebug and the dev environment in virtualhosts file
     # comment the upper line, and un-comment the lower one.
-    puppet.manifest_file  = "base.pp"
+    # puppet.manifest_file  = "base.pp"
   end
 end
