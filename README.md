@@ -49,7 +49,7 @@ $ cd vagrant-ezp5-puppet-mysql
 - Run `$ vagrant up` from the terminal
 - Wait (the first time will take a few minutes, as the base box is downloaded, and required packages are installed for the first time), get some coffee.
 - Done! `$ vagrant ssh` to SSH into your newly created machine. The MOTD contains details on the database, hostnames, etc.
-- By default Xdebug is enabled, if you want to disable it, go to line 64 and change from "dev" to "prod". Don't forget to run `$ vagrant up` after
+- By default Xdebug is disablwd, if you want to enable it, go to line 64 and change from "prod" to "dev". Don't forget to run `$ vagrant up` after
 
 ## Access your site
 
@@ -101,9 +101,9 @@ Apache/httpd: www root: /var/www/html
 
 eZ Publish 5 Project:
   location: /var/www/html/ezpublish5
-  hostname: ezp5.dev.vagrant
-  admin hostname: admin.ezp5.dev.vagrant
-  environment: dev
+  hostname: ezp5.prod.vagrant
+  admin hostname: admin.ezp5.prod.vagrant
+  environment: prod
 ```
 
 ## Customizations
@@ -120,7 +120,7 @@ puppet.facter = {
   "database_name"     => "ezp", # You can define the database name
   "database_user"     => "ezp", # You can define the database username
   "database_password" => "ezp", # You can define the database password
-  "env"               => "dev"  # This can be dev or prod
+  "env"               => "prod"  # This can be dev or prod
 }
 ```
 

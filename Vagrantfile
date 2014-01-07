@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
       "database_name"     => "ezp", # You can define the database name
       "database_user"     => "ezp", # You can define the database username
       "database_password" => "ezp", # You can define the database password
-      "env"               => "dev"  # This can be dev or prod
+      "env"               => "prod"  # This can be dev or prod
     }
     puppet.manifest_file  = "base.pp"
   end
