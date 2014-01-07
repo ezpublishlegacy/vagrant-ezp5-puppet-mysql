@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
   # information on available options.
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "base_xdebug.pp"
+    # puppet.manifest_file  = "base_xdebug.pp"
     puppet.module_path = "modules"
     # If you want to use the version that doesn't include xdebug and the dev environment in virtualhosts file
     # comment the upper line, and un-comment the lower one.
@@ -62,7 +62,8 @@ Vagrant.configure("2") do |config|
       "ezpublish_folder" => "ezpublish5",
       "ezpublish" => "ezpublish.tar.gz",
       "type" => "tar", # This can be tar, zip or git if you're using base_xdedug
-      "env" => "dev"
+      "env" => "dev" # This can be dev or prod
     }
+    puppet.manifest_file  = "base.pp"
   end
 end
