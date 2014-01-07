@@ -6,14 +6,14 @@ class httpd {
   } ~>
   file    {'/etc/httpd/conf.d/01.accept_pathinfo.conf':
     ensure  => file,
-    content => template('/tmp/vagrant-puppet/manifests/httpd/01.accept_pathinfo.conf.erb'),
+    content => template('/tmp/vagrant-puppet/modules-0/httpd/manifests/files/01.accept_pathinfo.conf.erb'),
     owner   => 'root',
     group   => 'root',
     mode    => '644',
   } ~>
   file    {'/etc/php.d/php.ini':
     ensure  => file,
-    content => template('/tmp/vagrant-puppet/manifests/php/php.ini.erb'),
+    content => template('/tmp/vagrant-puppet/modules-0/httpd/manifests/files/php.ini.erb'),
     owner   => 'root',
     group   => 'root',
     mode    => '644',
