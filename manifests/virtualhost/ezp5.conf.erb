@@ -1,5 +1,5 @@
 <VirtualHost *:80>
-    <Directory /var/www/html/ezpublish5/web>
+    <Directory <%= @www -%>/<%= @ezpublish_folder -%>/web>
         Options FollowSymLinks
         AllowOverride None
     </Directory>
@@ -7,7 +7,7 @@
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
     # Defaults to "prod" if omitted
-    SetEnv ENVIRONMENT "prod"
+    SetEnv ENVIRONMENT "<%= @env -%>"
 
     # Whether to use Symfony's ApcClassLoader.
     # Possible values: 0 or 1
@@ -102,7 +102,7 @@
         RewriteRule .* /index.php
     </IfModule>
  
-    DocumentRoot /var/www/html/ezpublish5/web
-    ServerName ezp5.dev.vagrant
-    ServerAlias admin.ezp5.dev.vagrant
+    DocumentRoot <%= @www -%>/<%= @ezpublish_folder -%>/web
+    ServerName ezp5.<%= @env -%>.vagrant
+    ServerAlias admin.ezp5.<%= @env -%>.vagrant
 </VirtualHost>

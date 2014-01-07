@@ -51,18 +51,17 @@ Vagrant.configure("2") do |config|
   # information on available options.
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
-    # puppet.manifest_file  = "base_xdebug.pp"
-    puppet.module_path = "modules"
-    # If you want to use the version that doesn't include xdebug and the dev environment in virtualhosts file
-    # comment the upper line, and un-comment the lower one.
-    # puppet.manifest_file  = "base.pp"
+    puppet.module_path    = "modules"
     puppet.facter = {
-      "www" => "/var/www/html",
-      "ezpublish_src" => "http://share.ez.no/content/download/154571/912584/version/1/file/ezpublish5_community_project-2013.11-gpl-full.tar.gz",
-      "ezpublish_folder" => "ezpublish5",
-      "ezpublish" => "ezpublish.tar.gz",
-      "type" => "tar", # This can be tar, zip or git if you're using base_xdedug
-      "env" => "dev" # This can be dev or prod
+      "www"               => "/var/www/html",
+      "ezpublish_src"     => "http://share.ez.no/content/download/154571/912584/version/1/file/ezpublish5_community_project-2013.11-gpl-full.tar.gz",
+      "ezpublish_folder"  => "ezpublish5",
+      "ezpublish"         => "ezpublish.tar.gz",
+      "type"              => "tar", # This can be tar, zip or git if you're using base_xdedug
+      "database_name"     => "ezp", # You can define the database name
+      "database_user"     => "ezp", # You can define the database username
+      "database_password" => "ezp", # You can define the database password
+      "env"               => "dev"  # This can be dev or prod
     }
     puppet.manifest_file  = "base.pp"
   end

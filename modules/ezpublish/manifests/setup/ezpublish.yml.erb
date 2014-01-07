@@ -16,10 +16,10 @@ ezpublish:
         ezdemo_group:
             database:
                 type: mysql
-                user: ezp
-                password: ezp
+                user: <%= @database_user+"\n" -%>
+                password: <%= @database_password+"\n" -%>
                 server: localhost
-                database_name: ezp
+                database_name: <%= @database_name+"\n" -%>
             languages:
                 - eng-GB
             var_dir: var/ezdemo_site

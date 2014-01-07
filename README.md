@@ -12,7 +12,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - Xdebug 2.2.3 or not, this is your choice through Vagrantfile setup
 - Composer
 - Git or not, this is your choice throught Vagrantfile setup
-- eZ Publish 5 Community 2013.11 ( Installed and ready to use )
+- eZ Publish 5 Community 2013.11 ( Installed and ready to use or GIT )
 
 ## Requirements:
 
@@ -49,7 +49,7 @@ $ cd vagrant-ezp5-puppet-mysql
 - Run `$ vagrant up` from the terminal
 - Wait (the first time will take a few minutes, as the base box is downloaded, and required packages are installed for the first time), get some coffee.
 - Done! `$ vagrant ssh` to SSH into your newly created machine. The MOTD contains details on the database, hostnames, etc.
-- By default Xdebug is enable, if you want to disable it, go to line 55 of Vagrantfile comment it and uncomment line 58. Don't forget to run `$ vagrant up` after
+- By default Xdebug is enabled, if you want to disable it, go to line 64 and change from "dev" to "prod". Don't forget to run `$ vagrant up` after
 
 ## Access your site
 
@@ -89,7 +89,7 @@ $ vagrant destroy
 $ vagrant up
 ```
 
-## Environment Details:
+## Default Environment Details:
 
 ```
 MySQL:
@@ -106,13 +106,17 @@ eZ Publish 5 Project:
   environment: dev
 ```
 
+## Customizations
+
+You can define the database, usename, password, location, etc... This is defined on the Vargrantfile from line 56 to 64
+
 ## Limitations
 
 - There is an issue with the network and guest aditions, you have to use Vagrant 1.3.4 http://downloads.vagrantup.com/tags/v1.3.4
 - VirtualBox 4.2, version 4.3 isn't supported yet
 
 ## COPYRIGHT
-Copyright (C) 1999-2013 eZ Systems AS. All rights reserved.
+Copyright (C) 1999-2014 eZ Systems AS. All rights reserved.
 
 ## LICENSE
 http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2

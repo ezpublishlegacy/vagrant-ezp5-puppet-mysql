@@ -4,9 +4,9 @@
 DatabaseImplementation=ezmysqli
 Server=localhost
 Port=
-User=ezp
-Password=ezp
-Database=ezp
+User=<%= @database_user+"\n" -%>
+Password=<%= @database_password+"\n" -%>
+Database=<%= @database_name+"\n" -%>
 Charset=
 Socket=disabled
 
