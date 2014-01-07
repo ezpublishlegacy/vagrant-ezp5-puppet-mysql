@@ -10,9 +10,9 @@ ActiveExtensions[]=ezie
 [DatabaseSettings]
 DatabaseImplementation=ezmysql
 Server=localhost
-User=ezp
-Password=ezp
-Database=ezp
+User=<%= @database_user+"\n" -%>
+Password=<%= @database_password+"\n" -%>
+Database=<%= @database_name+"\n" -%>
  
 [FileSettings]
 VarDir=var/ezdemo_site

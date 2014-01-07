@@ -53,15 +53,15 @@ Vagrant.configure("2") do |config|
     puppet.manifests_path = "manifests"
     puppet.module_path    = "modules"
     puppet.facter = {
-      "www"               => "/var/www/html",
+      "www"               => "/var/www/html", # Default apache folder
       "ezpublish_src"     => "http://share.ez.no/content/download/154571/912584/version/1/file/ezpublish5_community_project-2013.11-gpl-full.tar.gz",
-      "ezpublish_folder"  => "ezpublish5",
+      "ezpublish_folder"  => "ezpublish5", # Folder where eZ Publish will be installed
       "ezpublish"         => "ezpublish.tar.gz",
-      "type"              => "tar", # This can be tar, zip or git if you're using base_xdedug
+      "type"              => "tar", # This can be tar, zip or git if you're using dev environment
       "database_name"     => "ezp", # You can define the database name
       "database_user"     => "ezp", # You can define the database username
       "database_password" => "ezp", # You can define the database password
-      "env"               => "prod"  # This can be dev or prod
+      "env"               => "prod" # This environment can be dev or prod 
     }
     puppet.manifest_file  = "base.pp"
   end

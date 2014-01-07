@@ -1,10 +1,10 @@
 class ezpublish::install {
   ezpublish::install::fetch{ 'fetch':
-    www => $www, 
-    ezpublish_src => $ezpublish_src, 
+    www              => $www, 
+    ezpublish_src    => $ezpublish_src, 
     ezpublish_folder => $ezpublish_folder, 
-    ezpublish => $ezpublish, 
-    type => $type
+    ezpublish        => $ezpublish, 
+    type             => $type
   } ~>
   exec { "setfacl-R":
     command => "/usr/bin/setfacl -R -m u:apache:rwx -m u:apache:rwx $www/$ezpublish_folder/ezpublish/{cache,logs,config} $www/$ezpublish_folder/ezpublish_legacy/{design,extension,settings,var} web",
@@ -20,16 +20,9 @@ class ezpublish::install {
     command => "/bin/rm -rf $www/$ezpublish_folder/ezpublish/cache/*",
     onlyif  => '/usr/bin/test -d $www/$ezpublish_folder'
   } ~>
-  file { "$www/$ezpublish_folder/ezpublish/config/ezpublish_prod.yml":
+  file { "$www/$ezpublish_folder/ezpublish/config/ezpublish_$env.yml":
     ensure  => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/ezpublish_prod.yml.erb'),
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '666',
-  } ~>
-  file { "$www/$ezpublish_folder/ezpublish/config/ezpublish_dev.yml":
-    ensure => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/ezpublish_prod.yml.erb'),
+    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/ezpublish_env.yml.erb'),
     owner   => 'apache',
     group   => 'apache',
     mode    => '666',
@@ -71,9 +64,23 @@ class ezpublish::install {
     group   => 'apache',
     mode    => '666',
   } ->
+  file { "$www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/eng/override.ini.append.php":
+    ensure  => file,
+    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/override.ini.append.php.erb'),
+    owner   => 'apache',
+    group   => 'apache',
+    mode    => '666',
+  } ->
   file { "$www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/ezdemo_site/site.ini.append.php":
     ensure  => file,
     content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/ezdemo_site.ini.append.php.erb'),
+    owner   => 'apache',
+    group   => 'apache',
+    mode    => '666',
+  } ->
+  file { "$www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/ezdemo_site/override.ini.append.php":
+    ensure  => file,
+    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/override.ini.append.php.erb'),
     owner   => 'apache',
     group   => 'apache',
     mode    => '666',
@@ -96,6 +103,7 @@ class ezpublish::install {
   exec { "regenerateautoloads":
     command => "/usr/bin/php bin/php/ezpgenerateautoloads.php --extension",
     cwd  => "$www/$ezpublish_folder/ezpublish_legacy",
-    path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin:$www/$ezpublish_folder"
+    path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin:$www/$ezpublish_folder",
+    before => Exec["Fix Permissions"]
   }
 }
