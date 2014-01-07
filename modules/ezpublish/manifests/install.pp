@@ -1,9 +1,4 @@
 class ezpublish::install {
-  $www = '/var/www/html'
-  $ezpublish_src = 'http://share.ez.no/content/download/154571/912584/version/1/file/ezpublish5_community_project-2013.11-gpl-full.tar.gz'
-  $ezpublish_folder = 'ezpublish5'
-  $ezpublish = 'ezpublish.tar.gz'
-  $type = 'tar' # This can be tar, zip or git if you're using base_xdedug
   ezpublish::install::fetch{ 'fetch':
     www => $www, 
     ezpublish_src => $ezpublish_src, 
