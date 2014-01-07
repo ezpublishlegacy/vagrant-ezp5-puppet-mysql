@@ -110,6 +110,20 @@ eZ Publish 5 Project:
 
 You can define the database, usename, password, location, etc... This is defined on the Vargrantfile from line 56 to 64
 
+```
+puppet.facter = {
+  "www"               => "/var/www/html",
+  "ezpublish_src"     => "http://share.ez.no/content/download/154571/912584/version/1/file/ezpublish5_community_project-2013.11-gpl-full.tar.gz",
+  "ezpublish_folder"  => "ezpublish5",
+  "ezpublish"         => "ezpublish.tar.gz",
+  "type"              => "tar", # This can be tar, zip or git if you're using base_xdedug
+  "database_name"     => "ezp", # You can define the database name
+  "database_user"     => "ezp", # You can define the database username
+  "database_password" => "ezp", # You can define the database password
+  "env"               => "dev"  # This can be dev or prod
+}
+```
+
 ## Limitations
 
 - There is an issue with the network and guest aditions, you have to use Vagrant 1.3.4 http://downloads.vagrantup.com/tags/v1.3.4
