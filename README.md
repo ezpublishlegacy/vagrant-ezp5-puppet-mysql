@@ -104,6 +104,8 @@ eZ Publish 5 Project:
   hostname: ezp5.prod.vagrant
   admin hostname: admin.ezp5.prod.vagrant
   environment: prod
+  username: admin
+  password: publish
 ```
 
 ## Customizations
