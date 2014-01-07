@@ -2,7 +2,7 @@ class ezpublish {
   service { 'httpd':
     ensure => running,
     enable => true,
-    before => Exec["download"],
+    before => Class['ezpublish::install'],
     require => [File['/etc/httpd/conf.d/01.accept_pathinfo.conf'], File['/etc/httpd/conf.d/ezp5.conf']]
   } ~>
   exec { "Fix Permissions":
