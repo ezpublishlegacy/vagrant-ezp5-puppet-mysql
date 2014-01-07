@@ -1,3 +1,7 @@
+if $env == "dev" {
+    include system::git
+    include httpd::xdebug
+}
 include system::ntpd
 include system::motd
 include system::firewall
@@ -14,7 +18,3 @@ include startup
 include ezpublish
 include ezpublish::ezfind
 include ezpublish::install
-if $env == "dev" {
-    include system::git
-    include httpd::xdebug
-}

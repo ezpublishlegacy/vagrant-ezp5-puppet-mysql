@@ -102,8 +102,9 @@ class ezpublish::install {
   } ->
   exec { "regenerateautoloads":
     command => "/usr/bin/php bin/php/ezpgenerateautoloads.php --extension",
-    cwd  => "$www/$ezpublish_folder/ezpublish_legacy",
-    path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin:$www/$ezpublish_folder",
-    before => Exec["Fix Permissions"]
+    cwd     => "$www/$ezpublish_folder/ezpublish_legacy",
+    path    => "/usr/bin:/usr/sbin:/bin:/usr/local/bin:$www/$ezpublish_folder",
+    onlyif  => ['/usr/bin/test -d $www/$ezpublish_folder','/usr/bin/test -d $www/$ezpublish_folder/vendor'],
+    before  => Exec["Fix Permissions"]
   }
 }
