@@ -1,7 +1,7 @@
 class system::firewall {
     file    {'/etc/sysconfig/iptables':
       ensure  => file,
-      content => template('/tmp/vagrant-puppet/modules-0/system/manifests/files/iptables.erb'),
+      content => template('system/iptables.erb'),
       owner   => 'root',
       group   => 'root',
       mode    => '600',

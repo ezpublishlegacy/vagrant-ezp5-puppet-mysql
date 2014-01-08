@@ -5,7 +5,7 @@ class mysql {
     }
     file    {'/etc/my.cnf':
       ensure  => file,
-      content => template('/tmp/vagrant-puppet/modules-0/mysql/manifests/files/my.cnf.erb'),
+      content => template('mysql/my.cnf.erb'),
       owner   => 'root',
       mode    => '644',
     }

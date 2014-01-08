@@ -20,10 +20,9 @@ class ezpublish::install {
     command => "/bin/rm -rf $www/$ezpublish_folder/ezpublish/cache/*",
     onlyif  => '/usr/bin/test -d $www/$ezpublish_folder'
   } ~>
-
   file { "$www/$ezpublish_folder/ezpublish_legacy/kickstart.ini":
     ensure => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/kickstart.ini.erb'),
+    content => template('ezpublish/kickstart.ini.erb'),
     owner   => 'apache',
     group   => 'apache',
     mode    => '666',

@@ -5,6 +5,6 @@ class httpd::apc {
     } ~>
     file    {'/etc/php.d/apc.ini':
       ensure  => file,
-      content => template('/tmp/vagrant-puppet/modules-0/httpd/manifests/files/apc.ini.erb'),
+      content => template('httpd/apc.ini.erb'),
     }
 }

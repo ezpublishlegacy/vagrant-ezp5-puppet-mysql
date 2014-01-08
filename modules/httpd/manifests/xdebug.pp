@@ -7,7 +7,7 @@ class httpd::xdebug {
     }
     file    {'/etc/php.d/xdebug.ini':
       ensure  => file,
-      content => template('/tmp/vagrant-puppet/modules-0/httpd/manifests/files/xdebug.ini.erb'),
+      content => template('httpd/xdebug.ini.erb'),
       owner   => 'root',
       group   => 'root',
       mode    => '644',
