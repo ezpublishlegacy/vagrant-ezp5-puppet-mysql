@@ -20,16 +20,10 @@ class ezpublish::install {
     command => "/bin/rm -rf $www/$ezpublish_folder/ezpublish/cache/*",
     onlyif  => '/usr/bin/test -d $www/$ezpublish_folder'
   } ~>
-  file { "$www/$ezpublish_folder/ezpublish/config/ezpublish_$env.yml":
-    ensure  => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/ezpublish_env.yml.erb'),
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '666',
-  } ~>
-  file { "$www/$ezpublish_folder/ezpublish/config/ezpublish.yml":
+
+  file { "$www/$ezpublish_folder/ezpublish_legacy/kickstart.ini":
     ensure => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/ezpublish.yml.erb'),
+    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/kickstart.ini.erb'),
     owner   => 'apache',
     group   => 'apache',
     mode    => '666',
@@ -45,66 +39,5 @@ class ezpublish::install {
   exec { "assetic_dump":
     command => "/usr/bin/php $www/$ezpublish_folder/ezpublish/console assetic:dump",
     onlyif  => ['/usr/bin/test -d $www/$ezpublish_folder','/usr/bin/test -d $www/$ezpublish_folder/vendor'],
-  } ~>
-  exec { "create_folders":
-    command => "/bin/mkdir -p $www/$ezpublish_folder/ezpublish_legacy/settings/override && /bin/mkdir -p $www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/eng && /bin/mkdir -p $www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/ezdemo_site && /bin/mkdir -p $www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/ezdemo_site_admin",
-    returns => [ 0, 1, 2, '', ' ']
-  } ~>
-  file { "$www/$ezpublish_folder/ezpublish_legacy/settings/override/site.ini.append.php":
-    ensure  => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/override_site.ini.append.php.erb'),
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '666',
-  } ->
-  file { "$www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/eng/site.ini.append.php":
-    ensure  => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/ezdemo_site.ini.append.php.erb'),
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '666',
-  } ->
-  file { "$www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/eng/override.ini.append.php":
-    ensure  => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/override.ini.append.php.erb'),
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '666',
-  } ->
-  file { "$www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/ezdemo_site/site.ini.append.php":
-    ensure  => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/ezdemo_site.ini.append.php.erb'),
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '666',
-  } ->
-  file { "$www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/ezdemo_site/override.ini.append.php":
-    ensure  => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/override.ini.append.php.erb'),
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '666',
-  } ->
-  file { "$www/$ezpublish_folder/ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php":
-    ensure  => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/admin_site.ini.append.php.erb'),
-    owner   => 'apache',
-    group   => 'apache',
-    mode    => '666',
-  } ->
-  exec { "kernel_schema":
-    command => "/usr/bin/mysql -uezp -pezp ezp < $www/$ezpublish_folder/ezpublish_legacy/kernel/sql/mysql/kernel_schema.sql",
-    returns => [ 0, 1, '', ' ']
-  } ->
-  exec { "cleandata":
-    command => "/usr/bin/mysql -uezp -pezp ezp < $www/$ezpublish_folder/ezpublish_legacy/kernel/sql/common/cleandata.sql",
-    returns => [ 0, 1, '', ' ']
-  } ->
-  exec { "regenerateautoloads":
-    command => "/usr/bin/php bin/php/ezpgenerateautoloads.php --extension",
-    cwd     => "$www/$ezpublish_folder/ezpublish_legacy",
-    path    => "/usr/bin:/usr/sbin:/bin:/usr/local/bin:$www/$ezpublish_folder",
-    onlyif  => ['/usr/bin/test -d $www/$ezpublish_folder','/usr/bin/test -d $www/$ezpublish_folder/vendor'],
-    before  => Exec["Fix Permissions"]
-  }
+  } 
 }
