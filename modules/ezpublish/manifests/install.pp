@@ -20,7 +20,6 @@ class ezpublish::install {
     command => "/bin/rm -rf $www/$ezpublish_folder/ezpublish/cache/*",
     onlyif  => '/usr/bin/test -d $www/$ezpublish_folder'
   } ~>
-
   file { "$www/$ezpublish_folder/ezpublish_legacy/kickstart.ini":
     ensure => file,
     content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/kickstart.ini.erb'),
@@ -39,5 +38,17 @@ class ezpublish::install {
   exec { "assetic_dump":
     command => "/usr/bin/php $www/$ezpublish_folder/ezpublish/console assetic:dump",
     onlyif  => ['/usr/bin/test -d $www/$ezpublish_folder','/usr/bin/test -d $www/$ezpublish_folder/vendor'],
-  } 
+  } ~>
+  file { "$www/$ezpublish_folder/install_packages.sh":
+    ensure => file,
+    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/install_packages.sh'),
+    owner   => 'apache',
+    group   => 'apache',
+    mode    => '770',
+  } ~>
+  exec { "fetch_packages":
+    command => "/bin/bash $www/$ezpublish_folder/install_packages.sh",
+    path    => "/usr/local/bin/:/bin/",
+    returns => [ 0, 1 ]
+  }
 }
