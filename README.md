@@ -49,7 +49,7 @@ $ cd vagrant-ezp5-puppet-mysql
 - Run `$ vagrant up` from the terminal
 - Wait (the first time will take a few minutes, as the base box is downloaded, and required packages are installed for the first time), get some coffee.
 - Done! `$ vagrant ssh` to SSH into your newly created machine. The MOTD contains details on the database, hostnames, etc.
-- By default Xdebug is disablwd, if you want to enable it, go to line 64 and change from "prod" to "dev". Don't forget to run `$ vagrant up` after
+- By default Xdebug is disabled, if you want to enable it, go to line 64 and change from "prod" to "dev". Don't forget to run `$ vagrant up` after
 
 ## Access your site
 
