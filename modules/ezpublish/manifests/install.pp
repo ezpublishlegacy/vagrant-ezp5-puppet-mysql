@@ -41,7 +41,7 @@ class ezpublish::install {
   } ~>
   file { "$www/$ezpublish_folder/install_packages.sh":
     ensure => file,
-    content => template('/tmp/vagrant-puppet/modules-0/ezpublish/manifests/setup/install_packages.sh'),
+    content => template('ezpublish/install_packages.sh.erb'),
     owner   => 'apache',
     group   => 'apache',
     mode    => '770',
