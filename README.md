@@ -4,9 +4,9 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
 ## Stack & utilities:
 
-- CentOS 6.4 x64
+- CentOS 6.5 x64
 - Apache 2.2.15
-- MySQL 5.1.69
+- MySQL 5.1.71
 - PHP 5.3.3
 - APC 3.1.9
 - Xdebug 2.2.3 or not, this is your choice through Vagrantfile setup
@@ -21,10 +21,10 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
 ## Getting started:
 
-The following steps will setup a Cent Os 6.4 based VM for development with eZ Publish 2013.11 pre-installed.
+The following steps will setup a Cent Os 6.5 based VM for development with eZ Publish 2013.11 pre-installed.
 There are to possible processes, the first one you'll clone the repository while the second one you'll download it and extract it without needing to have the git tools installed:
 
-### 1. Cloning the repository
+### A. Cloning the repository
 
 - Clone this project to a directory 
 
@@ -34,7 +34,7 @@ $ git clone git@github.com:cleverti/vagrant-ezp5-puppet-mysql.git
 $ cd vagrant-ezp5-puppet-mysql
 ```
 
-### 2. Downloading the repository
+### B. Downloading the repository
 
 - Download: https://github.com/cleverti/vagrant-ezp5-puppet-mysql/archive/master.zip
 - Extract the file to a desired location
@@ -125,11 +125,6 @@ puppet.facter = {
   "env"               => "prod"  # This can be dev or prod
 }
 ```
-
-## Limitations
-
-- There is an issue with the network and guest aditions, you have to use Vagrant 1.3.4 http://downloads.vagrantup.com/tags/v1.3.4
-- VirtualBox 4.2, version 4.3 isn't supported yet
 
 ## COPYRIGHT
 Copyright (C) 1999-2014 eZ Systems AS. All rights reserved.
