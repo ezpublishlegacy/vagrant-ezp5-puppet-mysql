@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "local", "/local"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
       "ezpublish_src"     => "http://share.ez.no/content/download/154571/912584/version/1/file/ezpublish5_community_project-2013.11-gpl-full.tar.gz",
       "ezpublish_folder"  => "ezpublish5", # Folder where eZ Publish will be installed
       "ezpublish"         => "ezpublish.tar.gz",
-      "type"              => "tar", # This can be tar or git if you're using dev environment
+      "type"              => "tar", # This can be tar, local (tar) or git if you're using dev environment
       "database_name"     => "ezp", # You can define the database name
       "database_user"     => "ezp", # You can define the database username
       "database_password" => "ezp", # You can define the database password
