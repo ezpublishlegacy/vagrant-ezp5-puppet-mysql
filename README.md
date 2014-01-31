@@ -12,7 +12,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - Xdebug 2.2.3 or not, this is your choice through Vagrantfile setup
 - Composer
 - Git or not, this is your choice throught Vagrantfile setup
-- eZ Publish 5 Community 2013.11 ( Installed and ready to use or GIT )
+- eZ Publish 5 Community 2014.01 ( Installed and ready to use or GIT )
 
 ## Requirements:
 
@@ -21,7 +21,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
 ## Getting started:
 
-The following steps will setup a Cent Os 6.5 based VM for development with eZ Publish 2013.11 pre-installed.
+The following steps will setup a Cent Os 6.5 based VM for development with eZ Publish 2014.01 pre-installed.
 There are to possible processes, the first one you'll clone the repository while the second one you'll download it and extract it without needing to have the git tools installed:
 
 ### A. Cloning the repository
