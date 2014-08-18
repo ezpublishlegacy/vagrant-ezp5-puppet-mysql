@@ -9,11 +9,6 @@ function geteZPublish-Community {
     /usr/bin/git clone https://github.com/ezsystems/ezpublish-community.git $WWW/$EZPUBLISH_FOLDER
 }
 
-function geteZPublish-Legacy {
-    cd $WWW/$EZPUBLISH_FOLDER
-    /usr/bin/git clone https://github.com/ezsystems/ezpublish-legacy.git ezpublish_legacy
-}
-
 function composer-install {
     cd $WWW/$EZPUBLISH_FOLDER
     COMPOSER_HOME="$WWW/$EZPUBLISH_FOLDER" /usr/bin/php /usr/local/bin/composer.phar install --prefer-dist
@@ -21,6 +16,5 @@ function composer-install {
 
 if [ ! -d $WWW/$EZPUBLISH_FOLDER ]; then
     geteZPublish-Community
-    geteZPublish-Legacy
     composer-install
 fi
