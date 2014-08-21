@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
     puppet.module_path    = "modules"
     puppet.facter = {
       "www"               => "/var/www/html", # Default apache folder
-      "ezpublish_src"     => "http://share.ez.no/content/download/159044/938927/version/3/file/ezpublish5_community_project-2014.05.1-gpl-full.tar.gz",
+      "ezpublish_src"     => "http://share.ez.no/content/download/160423/948501/version/5/file/ezpublish5_community_project-2014.07.0-gpl-full.tar.gz",
       "ezpublish_folder"  => "ezpublish5", # Folder where eZ Publish will be installed
       "ezpublish"         => "archive_ezpublish.tar.gz",
       "type"              => "tar", # This can be tar, local (tar) or git if you're using dev environment
