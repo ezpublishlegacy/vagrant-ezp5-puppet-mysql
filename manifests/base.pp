@@ -12,8 +12,8 @@ include system::hosts
 include httpd
 include httpd::apc
 include httpd::virtualhosts
-include mysql
-include mysql::createdb
+include mariadb
+include mariadb::createdb
 include startup
 include ezpublish
 include ezpublish::ezfind
