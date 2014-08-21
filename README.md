@@ -4,12 +4,12 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
 ## Stack & utilities:
 
-- CentOS 6.5 x64
-- Apache 2.2.15
-- MySQL 5.1.71
-- PHP 5.3.3
-- APC 3.1.9
-- Xdebug 2.2.3 or not, this is your choice through Vagrantfile setup
+- CentOS 7.0 x64
+- Apache 2.4.6
+- MariaDB 5.5.37
+- PHP 5.4.16
+- APC 3.1.13
+- Xdebug 2.2.5 or not, this is your choice through Vagrantfile setup
 - Composer
 - Git or not, this is your choice throught Vagrantfile setup
 - eZ Publish 5 Community 2014.05 ( Installed and ready to use or GIT )
@@ -21,7 +21,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
 ## Getting started:
 
-The following steps will setup a Cent Os 6.5 based VM for development with eZ Publish 2014.05 pre-installed.
+The following steps will setup a Cent Os 7.0 based VM for development with eZ Publish 2014.05 pre-installed.
 There are to possible processes, the first one you'll clone the repository while the second one you'll download it and extract it without needing to have the git tools installed:
 
 ### A. Cloning the repository
