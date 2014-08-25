@@ -1,4 +1,4 @@
-# vagrant:ezp5:puppet:mysql:centos7
+# vagrant:ezp5:puppet:mariadb:centos7
 
 Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 
@@ -29,19 +29,19 @@ There are to possible processes, the first one you'll clone the repository while
 - Clone this project to a directory 
 
 ```
-$ git clone git@github.com:cleverti/vagrant-ezp5-puppet-mysql.git
+$ git clone git@github.com:cleverti/vagrant-ezp5-puppet-mariadb-centos7.git
 
-$ cd vagrant-ezp5-puppet-mysql
+$ cd vagrant-ezp5-puppet-mariadb-centos7
 ```
 
 ### B. Downloading the repository
 
-- Download: https://github.com/cleverti/vagrant-ezp5-puppet-mysql/archive/master.zip
+- Download: https://github.com/cleverti/vagrant-ezp5-puppet-mariadb-centos7/archive/master.zip
 - Extract the file to a desired location
 - Open your console and make sure you are inside the extracted folder
 
 ```
-$ cd vagrant-ezp5-puppet-mysql
+$ cd vagrant-ezp5-puppet-mariadb-centos7
 ```
 
 ### Common steps
@@ -57,7 +57,7 @@ $ cd vagrant-ezp5-puppet-mysql
 
 ## SSH into VM
 
-You'll have to be inside your folder (vagrant-ezp5-puppet-mysql)
+You'll have to be inside your folder (vagrant-ezp5-puppet-mariadb-centos7
 
 ```
 $ vagrant ssh
@@ -73,7 +73,7 @@ Password: vagrant
 
 ## Shutdown the VM
 
-You'll have to be inside your folder (vagrant-ezp5-puppet-mysql)
+You'll have to be inside your folder (vagrant-ezp5-puppet-mariadb-centos7)
 
 ```
 $ vagrant halt
@@ -81,7 +81,7 @@ $ vagrant halt
 
 ## Rebuild
 
-You'll have to be inside your folder (vagrant-ezp5-puppet-mysql)
+You'll have to be inside your folder (vagrant-ezp5-puppet-mariadb-centos7)
 
 ```
 $ vagrant destroy
