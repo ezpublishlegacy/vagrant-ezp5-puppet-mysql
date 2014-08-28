@@ -10,7 +10,7 @@ include system::imagick
 include system::composer
 include system::hosts
 include httpd
-include httpd::apc
+include httpd::zendopcache
 include httpd::virtualhosts
 include mariadb
 include mariadb::createdb
