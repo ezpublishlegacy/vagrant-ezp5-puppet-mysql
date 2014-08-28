@@ -8,7 +8,7 @@ Prototype development machine for eZ Publish 5.x, provisioned with Puppet.
 - Apache 2.4.6
 - MariaDB 5.5.37
 - PHP 5.4.16
-- APC 3.1.13
+- Zend Opcache 7.0.3
 - Xdebug 2.2.5 or not, this is your choice through Vagrantfile setup
 - Composer
 - Git or not, this is your choice throught Vagrantfile setup
