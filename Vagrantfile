@@ -40,11 +40,14 @@ Vagrant.configure("2") do |config|
   # Example for VirtualBox:
   #
   config.vm.provider :virtualbox do |vb|
-  # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
+    ## Don't boot with headless mode
+    # vb.gui = true
+    #
+    ## Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "1024"]
+    ## Set dns & proxy options to speed up net connection, ref: https://github.com/mitchellh/vagrant/issues/1807
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
   end
   #
   # View the documentation for the provider you're using for more

@@ -6,8 +6,8 @@
 
     # Environment.
     # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
-    # Defaults to "prod" if omitted
-    SetEnv ENVIRONMENT "<%= @env -%>"
+    # Defaults to "prod" if omitted (uses SetEnvIf so value can be used in rewrite rules)
+    SetEnvIf Request_URI ".*"  ENVIRONMENT=<%= @env -%>
 
     # Whether to use Symfony's ApcClassLoader.
     # Possible values: 0 or 1
@@ -96,8 +96,8 @@
         RewriteRule ^/bundles/ - [L]
  
         # Additional Assetic rules for eZ Publish 5.1 / 2013.4 and higher:
-        RewriteRule ^/css/.*\.css - [L]
-        RewriteRule ^/js/.*\.js - [L]
+        RewriteCond %{ENV:ENVIRONMENT} "prod"
+        RewriteRule ^/(css|js)/.*\.(css|js) - [L]
  
         RewriteRule .* /index.php
     </IfModule>
