@@ -9,5 +9,9 @@ class mariadb {
       hasrestart => true,
       require => Package["mariadb-server"],
       restart => true;
+    } ~>
+    exec { 'Add Mariadb to Boot':
+      command     => '/usr/bin/systemctl enable mariadb.service',
+      path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
     }
 }
