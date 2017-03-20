@@ -1,0 +1,22 @@
+eZ Publish 5.x Vagrant Box, provisioned with Puppet
+
+MySQL:
+ default database: <%= @database_name+"\n" -%>
+ default db user: <%= @database_user+"\n" -%>
+ default db user password: <%= @database_password+"\n" -%>
+
+Apache/httpd:
+ www root: <%= @www+"\n" -%>
+
+eZ Publish 5 Project:
+ location: <%= @www -%>/<%= @ezpublish_folder+"\n" -%> 
+ hostname: ezp5.<%= @env -%>.vagrant
+ admin hostname: admin.ezp5.<%= @env -%>.vagrant
+ environment: <%= @env+"\n" -%>
+
+COPYRIGHT
+Copyright (C) 1999-2014 eZ Systems AS. All rights reserved.
+
+LICENSE
+http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
+

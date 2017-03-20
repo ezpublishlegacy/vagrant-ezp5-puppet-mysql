@@ -7,12 +7,12 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "centos64"
+  config.vm.box = "centos7"
   config.vm.hostname = "ezp5.vagrant"
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   # config.vm.box_url = "http://domain.com/path/to/above.box"
-  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box"
+  config.vm.box_url = "http://cleverti.zz.mu/Vagrant/centos-7.0-x86_64.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -33,28 +33,38 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "local", "/local"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
   config.vm.provider :virtualbox do |vb|
-  # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
+    ## Don't boot with headless mode
+    # vb.gui = true
+    #
+    ## Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "1024"]
+    ## Set dns & proxy options to speed up net connection, ref: https://github.com/mitchellh/vagrant/issues/1807
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
   end
   #
   # View the documentation for the provider you're using for more
   # information on available options.
-
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "base_xdebug.pp"
-    # If you want to use the version that doesn't include xdebug and the dev environment in virtualhosts file
-    # comment the upper line, and un-comment the lower one.
-    #puppet.manifest_file  = "base.pp"
+    puppet.module_path    = "modules"
+    puppet.facter = {
+      "www"               => "/var/www/html", # Default apache folder
+      "ezpublish_src"     => "http://share.ez.no/content/download/160423/948501/version/5/file/ezpublish5_community_project-2014.07.0-gpl-full.tar.gz",
+      "ezpublish_folder"  => "ezpublish5", # Folder where eZ Publish will be installed
+      "ezpublish"         => "archive_ezpublish.tar.gz",
+      "type"              => "tar", # This can be tar, local (tar) or git if you're using dev environment
+      "database_name"     => "ezp", # You can define the database name
+      "database_user"     => "ezp", # You can define the database username
+      "database_password" => "ezp", # You can define the database password
+      "env"               => "prod" # This environment can be dev or prod 
+    }
+    puppet.manifest_file  = "base.pp"
   end
 end

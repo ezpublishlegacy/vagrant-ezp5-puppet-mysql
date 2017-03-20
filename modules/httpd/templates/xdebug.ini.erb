@@ -1,0 +1,21 @@
+zend_extension=/usr/lib64/php/modules/xdebug.so
+xdebug.remote_enable=1
+
+# Must be disabled for profiling/tracing, enable for remote debugging
+xdebug.extended_info = 0
+
+# Enabling profiling when asked for by request
+# http://xdebug.org/docs/all_settings#profiler_enable_trigger
+xdebug.profiler_enable_trigger = 1
+xdebug.profiler_enable = 0
+xdebug.profiler_output_dir = /local/profile_output
+xdebug.profiler_output_name = "callgrind.%R.%t"
+
+# Also allow tracing if asked for by request
+xdebug.trace_enable_trigger = 1
+xdebug.trace_format = 2
+xdebug.trace_output_dir = /local/profile_output/
+xdebug.trace_output_name = "trace.%R.%t"
+
+# xdebug.scream = 1
+# xdebug.show_exception_trace = 1
